@@ -19,7 +19,7 @@ async function pasteData(){
     MathJax.Hub.Queue(
         ['Typeset', MathJax.Hub, div],
         function() {
-            div.innerHTML = marked.parse(text);
+            div.innerHTML = marked.parse(div.innerHTML);
         }
     ); 
 }
