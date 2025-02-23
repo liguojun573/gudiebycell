@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>  
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+</head>
+<body id=content>  
+<button onclick=pasteData()>Paste</button>
+</body>
+<script>
+async function pasteData(){
+	 
+	  const text = await  navigator.clipboard.readText();
+	
+	 var div = document.getElementById('content');
+     div.innerHTML = text;
+    MathJax.Hub.Queue(
+        ['Typeset', MathJax.Hub, div],
+        function() {
+            div.innerHTML = marked.parse(text);
+        }
+    ); 
+}
+   
+</script>
+</html>
